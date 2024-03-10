@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head th:replace="~{layout/layout :: head}"></head>
+
+    <body>
+
+        <header th:replace="~{layout/layout :: header}"></header>
+
+        <div class="container py-4">
+
+            <div class="card bg-body-secondary">
+                <div class="card-header bg-primary-subtle" th:text="${titulo}"></div>
+                <div class="card-body">
+                    <table class="table table-borderless text-center table-light">
+                        <thead>
+                            <tr class="table-primary">
+                                <th >Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Factura</th>
+                                <th>Detalles Cliente</th>
+                                <th>Editar Cliente</th>
+                                <th>Eliminar Cliente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="cliente: ${clientes}">
+                                <td th:text="${cliente.nombre}"></td>
+                                <td th:text="${cliente.apellido}"></td>
+                                <td><a class="btn btn-outline-secondary btn-xs" th:href="@{'/factura/form/' + ${cliente.id}}" th:text="'Crear Factura'"></a></td>
+                                <td><a class="btn btn-outline-primary btn-xs" th:href="@{/ver/} + ${cliente.id}" th:text="Ver"></a></td>
+                                <td><a class="btn btn-outline-success btn-xs" th:href="@{/form/} + ${cliente.id}" th:text="Editar"></a></td>
+                                <td><a class="btn btn-outline-danger btn-xs" th:href="@{/eliminar/} + ${cliente.id}" th:text="Borrar" onclick="return confirm('¿Estas seguro que quieres eliminar?')"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+            <nav th:replace="~{paginator-nav :: paginator}"></nav>
+        </div>
+        <footer th:replace="~{layout/layout :: footer}"></footer>
+    </body>
+</html>

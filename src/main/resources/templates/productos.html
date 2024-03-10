@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head th:replace="~{layout/layout :: head}"></head>
+
+    <body>
+
+        <header th:replace="~{layout/layout :: header}"></header>
+        <br>
+        <h1 style="text-align: center;">Productos</h1>
+
+        <div class="container py-4">
+    <div class="row">
+        <div th:each="producto, iterStat : ${productos}" style="width: 33.33%;" class="text-center">
+            <img th:src="${producto.imagen}" style=" max-height: 100px;" alt="Imagen del producto"/><br>
+            <b><span th:text="${producto.nombre}"></span></b>
+            <p class="text-center"><span th:text="${producto.precio}"></span>€</p>
+        </div>
+    </div>
+</div>
+        <footer th:replace="~{layout/layout :: footer}"></footer>
+    </body>
+</html>

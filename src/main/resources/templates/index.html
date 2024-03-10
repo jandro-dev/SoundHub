@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="~{layout/layout :: head}"></head>
+<body>
+    <header th:replace="~{layout/layout :: header}"></header>
+    <div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <h1 class="display-3" th:text="${titulo}"></h1>
+            <p class="fs-4">Aquí podrás gestionar las facturas de los clientes</p>
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>
